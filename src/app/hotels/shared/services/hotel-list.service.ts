@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { IHotel } from '../models/hotel';
 
 @Injectable({
@@ -18,6 +18,12 @@ export class HotelListService {
           catchError(this.handleError)
         )
       );
+  }
+
+  public getHotelById(id: number): Observable<IHotel> {
+    return this.getHotels().pipe(
+      map((hotels) => hotels.find((hotel) => hotel.id === id))
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
