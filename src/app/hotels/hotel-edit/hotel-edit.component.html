@@ -1,1 +1,60 @@
-<p>hotel-edit works!</p>
+<div class="card">
+  <div class="card-header text-white bg-info">Créer un hotel</div>
+  <div class="card-body">
+    <form>
+      <div class="form-group row mb-2">
+        <label for="" class="col-md-2 col-form-label"> Nom Hotel </label>
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nom(Obligatoire)"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="" class="col-md-2 col-form-label"> Prix </label>
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Prix(Obligatoire)"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="" class="col-md-2 col-form-label"> Evaluation (1-5) </label>
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Evaluation(1-5)"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="description" class="col-md-2 col-form-label">
+          Description
+        </label>
+        <div class="col-md-8">
+          <textarea class="form-control" id="description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-info mr-3" type="submit">Sauvegarder</button>
+          <button class="btn btn-outline-secondary mr-3" type="button">
+            Annuler
+          </button>
+          <button class="btn btn-outline-danger" type="button">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
