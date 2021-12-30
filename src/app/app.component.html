@@ -11,13 +11,26 @@
             >Accueil</a
           >
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li
+          class="nav-item"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <a class="nav-link" [routerLink]="['/hotels']">Liste</a>
+        </li>
+        <li
+          class="nav-item"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/hotels', '0', 'edit']"
+            >Ajout d'hotel</a
+          >
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="mt-5">
+<div class="mt-5 container">
   <router-outlet></router-outlet>
 </div>

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HotelModule } from './hotels/hotel.module';
+import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localFr, 'fr');
 
@@ -18,13 +19,8 @@ registerLocaleData(localFr, 'fr');
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-
-      { path: '**', redirectTo: 'home', pathMatch: 'full' },
-    ]),
     HotelModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
