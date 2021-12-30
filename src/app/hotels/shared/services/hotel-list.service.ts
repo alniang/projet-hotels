@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { IHotel } from '../models/hotel';
 
 @Injectable({
@@ -21,9 +22,21 @@ export class HotelListService {
   }
 
   public getHotelById(id: number): Observable<IHotel> {
+    if (id === 0) return of(this.getDefaultHotel());
     return this.getHotels().pipe(
       map((hotels) => hotels.find((hotel) => hotel.id === id))
     );
+  }
+
+  private getDefaultHotel(): IHotel {
+    return {
+      id: 0,
+      hotelName: null,
+      description: null,
+      price: null,
+      rating: null,
+      imageUrl: null,
+    };
   }
 
   private handleError(error: HttpErrorResponse) {

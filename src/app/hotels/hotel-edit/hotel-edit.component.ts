@@ -12,6 +12,7 @@ import { IHotel } from '../shared/models/hotel';
 export class HotelEditComponent implements OnInit {
   public hotelForm: FormGroup;
   public hotel: IHotel;
+  public pageTitle: string;
 
   constructor(
     private fb: FormBuilder,
@@ -41,6 +42,9 @@ export class HotelEditComponent implements OnInit {
 
   public displayHotel(hotel: IHotel): void {
     this.hotel = hotel;
+
+    if (this.hotel.id === 0) this.pageTitle = 'Créer un hotel';
+    else this.pageTitle = `Modifier l\'hotel ${this.hotel.hotelName}`;
 
     this.hotelForm.patchValue({
       hotelName: this.hotel.hotelName,
