@@ -68,9 +68,18 @@
               keyboard_arrow_right
             </span>
           </div>
-          <span class="badge badge-pill badge-info" *ngIf="showBadge"
-            >Nouveau</span
-          >
+          <ng-container *ngFor="let tag of hotel.tags; let i = index">
+            <ng-container *ngIf="showBadge">
+              <span
+                class="badge badge-pill"
+                [ngClass]="
+                  i % 2 === 0 ? 'badge-info' : 'badge-success ml-2 mr-2'
+                "
+              >
+                {{ tag }}
+              </span>
+            </ng-container>
+          </ng-container>
         </div>
       </div>
     </div>

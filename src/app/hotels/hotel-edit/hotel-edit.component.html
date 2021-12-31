@@ -72,7 +72,11 @@
         </div>
         <div class="row">
           <div class="col-md-2 mb-2">
-            <button class="btn btn-outline-primary btn-sm" (click)="addTags()">
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              (click)="addTags()"
+            >
               Ajouter une étiquette
             </button>
           </div>
@@ -105,7 +109,7 @@
           <button
             class="btn btn-outline-danger"
             type="button"
-            [disabled]="hotel.id === 0"
+            [disabled]="hotel?.id === 0"
             (click)="deleteHotel()"
           >
             Supprimer
