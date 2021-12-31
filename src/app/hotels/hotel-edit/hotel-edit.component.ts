@@ -20,6 +20,14 @@ export class HotelEditComponent implements OnInit {
   public hotel: IHotel;
   public pageTitle: string;
   public errorMessage: string;
+  private validationMessage: { [key: string]: { [key: string]: string } } = {
+    hotelName: {
+      required: "Le nom de l'hotel est obligatoire",
+    },
+    price: {
+      required: "Le prix de l'hotel est obligatoire",
+    },
+  };
 
   constructor(
     private fb: FormBuilder,
