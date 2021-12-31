@@ -47,6 +47,11 @@ export class HotelListService {
     return this.http.put<IHotel>(url, hotel).pipe(catchError(this.handleError));
   }
 
+  public deleteHotel(id: number): Observable<{}> {
+    const url = `${this.HOTEL_API_URL}/${id}`;
+    return this.http.delete<IHotel>(url).pipe(catchError(this.handleError));
+  }
+
   private getDefaultHotel(): IHotel {
     return {
       id: 0,
