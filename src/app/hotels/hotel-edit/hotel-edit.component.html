@@ -1,5 +1,13 @@
+<ng-container *ngIf="errorMessage">
+  <div class="alert alert-danger d-flex align-items-center">
+    <span class="material-icons mr-2">error</span>
+    {{ errorMessage }}
+    <span class="material-icons ml-auto" (click)="hideError()">close</span>
+  </div>
+</ng-container>
 <div class="card">
   <div class="card-header text-white bg-info">{{ pageTitle }}</div>
+
   <div class="card-body">
     <form novalidate (ngSubmit)="saveHotel()" [formGroup]="hotelForm">
       <div class="form-group row mb-2">
