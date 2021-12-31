@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -9,18 +9,20 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotelListService } from '../shared/services/hotel-list.service';
 import { IHotel } from '../shared/models/hotel';
+import { GlobalGenericValidator } from '../shared/validators/global-generic.validator';
 
 @Component({
   selector: 'app-hotel-edit',
   templateUrl: './hotel-edit.component.html',
   styleUrls: ['./hotel-edit.component.css'],
 })
-export class HotelEditComponent implements OnInit {
+export class HotelEditComponent implements OnInit, AfterViewInit {
   public hotelForm: FormGroup;
   public hotel: IHotel;
   public pageTitle: string;
   public errorMessage: string;
-  private validationMessage: { [key: string]: { [key: string]: string } } = {
+  public formErrors: { [key: string]: string } = {};
+  private validationMessages: { [key: string]: { [key: string]: string } } = {
     hotelName: {
       required: "Le nom de l'hotel est obligatoire",
     },
@@ -28,6 +30,8 @@ export class HotelEditComponent implements OnInit {
       required: "Le prix de l'hotel est obligatoire",
     },
   };
+
+  private globalGenericValidator: GlobalGenericValidator;
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +41,10 @@ export class HotelEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.globalGenericValidator = new GlobalGenericValidator(
+      this.validationMessages
+    );
+
     this.hotelForm = this.fb.group({
       hotelName: ['', Validators.required],
       price: ['', Validators.required],
@@ -49,6 +57,12 @@ export class HotelEditComponent implements OnInit {
       const id = +params.get('id');
       this.getSelectedHotel(id);
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.formErrors = this.globalGenericValidator.createErrorMessage(
+      this.hotelForm
+    );
   }
 
   public hideError(): void {
