@@ -39,7 +39,11 @@
             class="form-control"
             formControlName="price"
             placeholder="Prix(Obligatoire)"
+            [ngClass]="{ 'is-invalid': formErrors.price }"
           />
+          <span class="invalid-feedback">
+            {{ formErrors.price }}
+          </span>
         </div>
       </div>
 
@@ -54,7 +58,11 @@
             class="form-control"
             formControlName="rating"
             placeholder="Evaluation(1-5)"
+            [ngClass]="{ 'is-invalid': formErrors.rating }"
           />
+          <span class="invalid-feedback">
+            {{ formErrors.rating }}
+          </span>
         </div>
       </div>
 
