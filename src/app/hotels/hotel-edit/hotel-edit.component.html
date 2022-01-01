@@ -9,6 +9,7 @@
   <div class="card-header text-white bg-info">{{ pageTitle }}</div>
 
   <div class="card-body">
+    <!-- <input type="text" #test /> -->
     <form novalidate (ngSubmit)="saveHotel()" [formGroup]="hotelForm">
       <div class="form-group row mb-2">
         <label for="hotelNameId" class="col-md-2 col-form-label">
@@ -23,10 +24,10 @@
             placeholder="Nom(Obligatoire)"
             [ngClass]="{ 'is-invalid': formErrors.hotelName }"
           />
+          <span class="invalid-feedback">
+            {{ formErrors.hotelName }}
+          </span>
         </div>
-        <span class="invalid-feedback">
-          {{ formErrors.hotelName }}
-        </span>
       </div>
 
       <div class="form-group row mb-2">
